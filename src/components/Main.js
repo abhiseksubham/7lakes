@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import NewUserForm from "./NewUserForm";
-import UserList from "./UserList";
+import UserList from "./AlbumList";
 import { connect } from "react-redux";
 import {
   getUsersRequest,
@@ -8,13 +7,12 @@ import {
   deleteUserRequest,
   usersError,
   getPhotosOfAlbumsRequest,
-} from "../actions/users";
+} from "../actions/albums";
 import { Alert } from "reactstrap";
 
 class Main extends Component {
   constructor(props) {
     super(props);
-
     this.props.getUsersRequest();
   }
 
@@ -23,11 +21,6 @@ class Main extends Component {
       firstName,
       lastName,
     });
-  };
-
-  handleDeleteUserClick = (userId) => {
-    //this.props.deleteUserRequest(userId);
-    console.log(userId);
   };
 
   handleCloseAlert = () => {
@@ -48,10 +41,9 @@ class Main extends Component {
         >
           {this.props.users.error}
         </Alert>
-        {/* <NewUserForm onSubmit={this.handleCreateUserSubmit} /> */}
         {!!users.items && !!users.items.length && (
           <UserList
-            onDeleteUserClick={this.handleDeleteUserClick}
+            onDeleteUserClick={this.props.handleDeleteUserClick}
             users={users}
           />
         )}

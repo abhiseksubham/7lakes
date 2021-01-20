@@ -1,4 +1,4 @@
-import { Types } from "../actions/users";
+import { Types } from "../actions/albums";
 
 const INITIAL_STATE = {
   items: [],

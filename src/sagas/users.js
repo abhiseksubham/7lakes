@@ -6,7 +6,7 @@ import {
   put,
   fork,
 } from "redux-saga/effects";
-import * as actions from "../actions/users";
+import * as actions from "../actions/albums";
 import * as api from "../api/users";
 
 function* getUsers() {
@@ -53,52 +53,52 @@ function* watchgetPhotos() {
   yield takeLatest(actions.Types.GET_ALBUM_PHOTOS, getPhotos);
 }
 
-function* deleteUser(userId) {
-  try {
-    yield call(api.deleteUser, userId);
+// function* deleteUser(userId) {
+//   try {
+//     yield call(api.deleteUser, userId);
 
-    yield call(getUsers);
-  } catch (e) {
-    yield put(
-      actions.usersError({
-        error: "An error occurred when trying to delete the user",
-      })
-    );
-  }
-}
+//     yield call(getUsers);
+//   } catch (e) {
+//     yield put(
+//       actions.usersError({
+//         error: "An error occurred when trying to delete the user",
+//       })
+//     );
+//   }
+// }
 
-function* watchDeleteUserRequest() {
-  while (true) {
-    const { payload } = yield take(actions.Types.DELETE_USER_REQUEST);
-    yield call(deleteUser, payload.userId);
-  }
-}
+// function* watchDeleteUserRequest() {
+//   while (true) {
+//     const { payload } = yield take(actions.Types.DELETE_USER_REQUEST);
+//     yield call(deleteUser, payload.userId);
+//   }
+// }
 
-function* createUser({ payload }) {
-  try {
-    yield call(api.createUser, {
-      firstName: payload.firstName,
-      lastName: payload.lastName,
-    });
+// function* createUser({ payload }) {
+//   try {
+//     yield call(api.createUser, {
+//       firstName: payload.firstName,
+//       lastName: payload.lastName,
+//     });
 
-    yield call(getUsers);
-  } catch (e) {
-    yield put(
-      actions.usersError({
-        error: "An error occurred when trying to create the user",
-      })
-    );
-  }
-}
+//     yield call(getUsers);
+//   } catch (e) {
+//     yield put(
+//       actions.usersError({
+//         error: "An error occurred when trying to create the user",
+//       })
+//     );
+//   }
+// }
 
-function* watchCreateUserRequest() {
-  yield takeLatest(actions.Types.CREATE_USER_REQUEST, createUser);
-}
+// function* watchCreateUserRequest() {
+//   yield takeLatest(actions.Types.CREATE_USER_REQUEST, createUser);
+// }
 
 const userSagas = [
   fork(watchGetUsersRequest),
-  fork(watchDeleteUserRequest),
-  fork(watchCreateUserRequest),
+  // fork(watchDeleteUserRequest),
+  // fork(watchCreateUserRequest),
   fork(watchgetPhotos),
 ];
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import { Button } from "reactstrap";
 
-const UserListItem = ({ user, onDeleteClick }) => {
+const UserListItem = ({ user, onDeleteClick, selectedAlbum }) => {
   const stringToHslColor = (str = "") => {
     let hash = 0;
     for (let i = 0; i < str.length; i++) {
@@ -12,7 +12,9 @@ const UserListItem = ({ user, onDeleteClick }) => {
     const h = hash % 360;
     return `hsl(${h},60%,80%)`;
   };
-  console.log(user);
+  // console.log(user);
+  // console.log(onDeleteClick);
+  console.log({ selectedAlbum });
 
   return (
     <div style={{ display: "flex" }}>
@@ -36,7 +38,12 @@ const UserListItem = ({ user, onDeleteClick }) => {
       </div>
       <div style={{ margin: "auto 0" }}>
         <Link to={`/AlbumDetails/${user.id}`}>
-          <Button size="sm" color="danger" outline>
+          <Button
+            size="sm"
+            color="danger"
+            outline
+            onClick={() => onDeleteClick(user)}
+          >
             Open
           </Button>
         </Link>
