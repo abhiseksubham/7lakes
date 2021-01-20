@@ -18,7 +18,7 @@ class App extends Component {
     });
   };
 
-  handleDeleteUserClick = (album) => {
+  handleSelectAlbumClick = (album) => {
     this.setState({ album: album });
     localStorage.setItem("id", album.id);
   };
@@ -42,7 +42,7 @@ class App extends Component {
         </nav>
         <Switch>
           <Route exact path="/">
-            <Main handleDeleteUserClick={this.handleDeleteUserClick} />
+            <Main handleSelectAlbumClick={this.handleSelectAlbumClick} />
           </Route>
           <Route
             exact

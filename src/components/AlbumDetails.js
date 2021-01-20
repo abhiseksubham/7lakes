@@ -11,7 +11,7 @@ class AlbumDetails extends Component {
     console.log(props);
   }
   render() {
-    const photos = this.props.users.photos;
+    const photos = this.props.albums.photos;
     return (
       <>
         <div>
@@ -48,6 +48,6 @@ class AlbumDetails extends Component {
   }
 }
 
-export default connect(({ users }) => ({ users }), {
+export default connect(({ albums }) => ({ albums }), {
   getPhotosOfAlbumsRequest,
 })(AlbumDetails);

@@ -2,19 +2,15 @@ import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import { Button } from "reactstrap";
 
-const UserListItem = ({ user, onDeleteClick, selectedAlbum }) => {
+const UserListItem = ({ albums, onSelectAlbumClick, selectedAlbum }) => {
   const stringToHslColor = (str = "") => {
     let hash = 0;
     for (let i = 0; i < str.length; i++) {
       hash = str.charCodeAt(i) + ((hash << 5) - hash);
     }
-
     const h = hash % 360;
     return `hsl(${h},60%,80%)`;
   };
-  // console.log(user);
-  // console.log(onDeleteClick);
-  console.log({ selectedAlbum });
 
   return (
     <div style={{ display: "flex" }}>
@@ -28,21 +24,21 @@ const UserListItem = ({ user, onDeleteClick, selectedAlbum }) => {
           borderRadius: "50%",
           color: "white",
           fontWeight: "bold",
-          background: stringToHslColor(user.title),
+          background: stringToHslColor(albums.title),
         }}
       >
-        {!!user && !!user.title ? user.title : ""}
+        {!!albums && !!albums.title ? albums.title : ""}
       </div>
       <div style={{ margin: "auto 0", flexGrow: 1, paddingLeft: "10px" }}>
-        {user.id} {user.title}
+        {albums.id} {albums.title}
       </div>
       <div style={{ margin: "auto 0" }}>
-        <Link to={`/AlbumDetails/${user.id}`}>
+        <Link to={`/AlbumDetails/${albums.id}`}>
           <Button
             size="sm"
             color="danger"
             outline
-            onClick={() => onDeleteClick(user)}
+            onClick={() => onSelectAlbumClick(albums)}
           >
             Open
           </Button>

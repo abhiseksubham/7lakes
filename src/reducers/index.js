@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import UsersReducer from "./albums";
+import AlbumsReducer from "./albums";
 
 export default combineReducers({
-  users: UsersReducer,
+  albums: AlbumsReducer,
 });

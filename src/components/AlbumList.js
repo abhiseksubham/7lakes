@@ -2,16 +2,15 @@ import React from "react";
 import UserListItem from "./AlbumListItem";
 import { ListGroup, ListGroupItem } from "reactstrap";
 
-const UserList = ({ users, onDeleteUserClick, selectedAlbum }) => {
-  console.log(users);
+const AlbumList = ({ albums, onSelectAlbumClick, selectedAlbum }) => {
   return (
     <ListGroup>
-      {users.items.map((user) => {
+      {albums.items.map((albums) => {
         return (
-          <ListGroupItem key={user.id}>
+          <ListGroupItem key={albums.id}>
             <UserListItem
-              onDeleteClick={onDeleteUserClick}
-              user={user}
+              onSelectAlbumClick={onSelectAlbumClick}
+              albums={albums}
               selectedAlbum={selectedAlbum}
             />
           </ListGroupItem>
@@ -21,4 +20,4 @@ const UserList = ({ users, onDeleteUserClick, selectedAlbum }) => {
   );
 };
 
-export default UserList;
+export default AlbumList;

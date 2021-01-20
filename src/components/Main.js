@@ -3,7 +3,6 @@ import UserList from "./AlbumList";
 import { connect } from "react-redux";
 import {
   getPhotosRequest,
-  createUserRequest,
   photosError,
   getPhotosOfAlbumsRequest,
 } from "../actions/albums";
@@ -15,13 +14,6 @@ class Main extends Component {
     this.props.getPhotosRequest();
   }
 
-  handleCreateUserSubmit = ({ firstName, lastName }) => {
-    this.props.createUserRequest({
-      firstName,
-      lastName,
-    });
-  };
-
   handleCloseAlert = () => {
     this.props.photosError({
       error: "",
@@ -29,21 +21,21 @@ class Main extends Component {
   };
 
   render() {
-    const users = this.props.users;
+    const albums = this.props.albums;
     return (
       <div style={{ margin: "0 auto", padding: "20px" }}>
         <h2>Albums</h2>
         <Alert
           color="danger"
-          isOpen={!!this.props.users.error}
+          isOpen={!!this.props.albums.error}
           toggle={this.handleCloseAlert}
         >
-          {this.props.users.error}
+          {this.props.albums.error}
         </Alert>
-        {!!users.items && !!users.items.length && (
+        {!!albums.items && !!albums.items.length && (
           <UserList
-            onDeleteUserClick={this.props.handleDeleteUserClick}
-            users={users}
+            onSelectAlbumClick={this.props.handleSelectAlbumClick}
+            albums={albums}
           />
         )}
       </div>
@@ -51,9 +43,8 @@ class Main extends Component {
   }
 }
 
-export default connect(({ users }) => ({ users }), {
+export default connect(({ albums }) => ({ albums }), {
   getPhotosRequest,
-  createUserRequest,
   photosError,
   getPhotosOfAlbumsRequest,
 })(Main);
