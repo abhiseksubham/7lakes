@@ -1,11 +1,4 @@
-import {
-  takeEvery,
-  takeLatest,
-  take,
-  call,
-  put,
-  fork,
-} from "redux-saga/effects";
+import { takeEvery, takeLatest, call, put, fork } from "redux-saga/effects";
 import * as actions from "../actions/albums";
 import * as api from "../api/albums";
 

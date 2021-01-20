@@ -34,7 +34,7 @@ class AlbumDetails extends Component {
                         </div>
                         <div className="text">Title:{photo.title}</div>
                         <div>
-                          <img src={photo.thumbnailUrl}></img>
+                          <img src={photo.thumbnailUrl} alt={"not found"}></img>
                         </div>
                       </div>
                     </div>

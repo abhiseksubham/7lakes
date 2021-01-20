@@ -30,7 +30,6 @@ class App extends Component {
   };
 
   render() {
-    const users = this.props.users;
     return (
       <div style={{ margin: "0 auto", padding: "20px", maxWidth: "1000px" }}>
         <nav className="navbar navbar-light">
