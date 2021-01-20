@@ -5,6 +5,7 @@ export const getAlbums = () => {
 };
 
 export const getPhotos = (id = 1) => {
+  id = localStorage.getItem("id");
   return axios.get("/photos", {
     params: {
       albumId: id,

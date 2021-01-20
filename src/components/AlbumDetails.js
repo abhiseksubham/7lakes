@@ -7,7 +7,7 @@ class AlbumDetails extends Component {
   constructor(props) {
     super(props);
 
-    this.props.getPhotosOfAlbumsRequest();
+    this.props.getPhotosOfAlbumsRequest(props.id);
     console.log(props);
   }
   render() {

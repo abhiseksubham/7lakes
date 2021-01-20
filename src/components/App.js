@@ -20,10 +20,11 @@ class App extends Component {
 
   handleDeleteUserClick = (album) => {
     this.setState({ album: album });
+    localStorage.setItem("id", album.id);
   };
 
   handleCloseAlert = () => {
-    this.props.usersError({
+    this.props.photosError({
       error: "",
     });
   };

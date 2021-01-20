@@ -13,13 +13,13 @@ function* getAlbums() {
   try {
     const result = yield call(api.getAlbums);
     yield put(
-      actions.getUsersSuccess({
+      actions.getPhotosSuccess({
         items: result.data,
       })
     );
   } catch (e) {
     yield put(
-      actions.usersError({
+      actions.photosError({
         error: "An error occurred when trying to get the albums",
       })
     );
@@ -41,7 +41,7 @@ function* getPhotos() {
     );
   } catch (e) {
     yield put(
-      actions.usersError({
+      actions.photosError({
         error: "An error occurred when trying to get the users",
       })
     );
@@ -52,6 +52,6 @@ function* watchgetPhotos() {
   yield takeLatest(actions.Types.GET_ALBUM_PHOTOS, getPhotos);
 }
 
-const userSagas = [fork(watchGetUsersRequest), fork(watchgetPhotos)];
+const photoSagas = [fork(watchGetUsersRequest), fork(watchgetPhotos)];
 
-export default userSagas;
+export default photoSagas;

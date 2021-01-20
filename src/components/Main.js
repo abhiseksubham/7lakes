@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import UserList from "./AlbumList";
 import { connect } from "react-redux";
 import {
-  getUsersRequest,
+  getPhotosRequest,
   createUserRequest,
-  deleteUserRequest,
-  usersError,
+  photosError,
   getPhotosOfAlbumsRequest,
 } from "../actions/albums";
 import { Alert } from "reactstrap";
@@ -13,7 +12,7 @@ import { Alert } from "reactstrap";
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.props.getUsersRequest();
+    this.props.getPhotosRequest();
   }
 
   handleCreateUserSubmit = ({ firstName, lastName }) => {
@@ -24,7 +23,7 @@ class Main extends Component {
   };
 
   handleCloseAlert = () => {
-    this.props.usersError({
+    this.props.photosError({
       error: "",
     });
   };
@@ -32,7 +31,7 @@ class Main extends Component {
   render() {
     const users = this.props.users;
     return (
-      <div style={{ margin: "0 auto", padding: "20px", maxWidth: "600px" }}>
+      <div style={{ margin: "0 auto", padding: "20px" }}>
         <h2>Albums</h2>
         <Alert
           color="danger"
@@ -53,9 +52,8 @@ class Main extends Component {
 }
 
 export default connect(({ users }) => ({ users }), {
-  getUsersRequest,
+  getPhotosRequest,
   createUserRequest,
-  deleteUserRequest,
-  usersError,
+  photosError,
   getPhotosOfAlbumsRequest,
 })(Main);
