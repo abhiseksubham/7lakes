@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getUsers = () => {
+export const getAlbums = () => {
   return axios.get("/albums", {});
 };
 
